@@ -26,3 +26,46 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
         window.location.href = "./HomePage.html";
     }
 });
+
+    // Function to toggle "Add to Cart" and "Remove from Cart" button
+
+
+function toggleCartButton(button, title, description, price) {
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    if (button.textContent === "Add to Cart") {
+        button.textContent = "Remove from Cart";
+        button.classList.remove('btn-success');
+        button.classList.add('btn-danger');
+
+        // Add product to cartItems array
+        cartItems.push({ title, description, price });
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    } else {
+        button.textContent = "Add to Cart";
+        button.classList.remove('btn-danger');
+        button.classList.add('btn-success');
+
+        // Remove product from cartItems array
+        cartItems = cartItems.filter(item => item.title !== title);
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
+}
+
+
+
+
+    
+    
+       
+   
+
+
+    
+
+
+
+
+  
+
+

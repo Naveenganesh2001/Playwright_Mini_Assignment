@@ -2,9 +2,121 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Welcome to the Home Page!</h1>
+    <!-- Sidebar (Drawer) -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
+        <div class="offcanvas-header">
+            <h5 id="sidebarLabel">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-group">
+                <li class="list-group-item"><a href="profilePage.html">Profile</a></li>
+                <li class="list-group-item"><a href="cartPage.html">Cart</a></li>
+                <li class="list-group-item"><a href="loginPage.html">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <h2>Welcome to the Home Page!</h2>
+                <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">Open Menu</button>
+            </div>
+        </div>
+
+        <!-- Product List -->
+        <div class="row mt-4" id="product-list">
+            <!-- Example: Repeat for more products -->
+            <div class="col-md-4 mb-4" id="product1">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Watch">
+                    <div class="card-body">
+                        <h5 class="card-title">Omega Seamaster</h5>
+                        <p class="card-text">Experience timeless elegance with the Omega Seamaster. Precision meets design in this luxury diving watch.</p>
+                        <p class="price">$899.00</p>
+                        <button class="btn btn-success" onclick="toggleCartButton(this, 'Omega Seamaster', 'Experience timeless elegance with the Omega Seamaster. Precision meets design in this luxury diving watch.', 899)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-md-4 mb-4" id="product2">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Watch">
+                    <div class="card-body">
+                        <h5 class="card-title">Rolex Submariner</h5>
+                        <p class="card-text">A true icon of style and performance, the Rolex Submariner is perfect for sea adventures and formal events.</p>
+                        <p class="price">$999.00</p>
+                        <button class="btn btn-success" onclick="toggleCartButton(this, 'Rolex Submariner', 'A true icon of style and performance, the Rolex Submariner is perfect for sea adventures and formal events.', 999)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4" id="product3">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Apple+iPhone+13" class="card-img-top" alt="Apple iPhone 13">
+                    <div class="card-body">
+                        <h5 class="card-title">Apple iPhone 13</h5>
+                        <p class="card-text">The iPhone 13 features a sleek design, powerful performance, and a dual-camera system for stunning photos.</p>
+                        <p class="price">$799.00</p>
+                        <button class="btn btn-success" onclick="toggleCartButton(this, 'Apple iPhone 13', 'he iPhone 13 features a sleek design, powerful performance, and a dual-camera system for stunning photos.', 799)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2: Nike Air Max 270 -->
+            <div class="col-md-4 mb-4" id="product4">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Nike+Air+Max" class="card-img-top" alt="Nike Air Max 270">
+                    <div class="card-body">
+                        <h5 class="card-title">Nike Air Max 270</h5>
+                        <p class="card-text">Nike's Air Max 270 offers comfort and style with a large Air unit for cushioning and sleek design.</p>
+                        <p class="price">$150.00</p>
+                        <button class="btn btn-success" onclick="toggleCartButton(this, 'Nike Air Max 270', 'Nike Air Max 270 offers comfort and style with a large Air unit for cushioning and sleek design.', 150)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3: Sony WH-1000XM5 -->
+            <div class="col-md-4 mb-4" id="product5">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Sony+WH-1000XM5" class="card-img-top" alt="Sony WH-1000XM5">
+                    <div class="card-body">
+                        <h5 class="card-title">Sony WH-1000XM5</h5>
+                        <p class="card-text">Sony WH-1000XM5 headphones offer industry-leading noise cancellation and excellent sound quality.</p>
+                        <p class="price">$348.00</p>
+                        <button class="btn btn-success" onclick="toggleCartButton(this, 'Sony WH-1000XM5', 'Sony WH-1000XM5 headphones offer industry-leading noise cancellation and excellent sound quality.', 348)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4: Samsung Galaxy S21 -->
+            <div class="col-md-4 mb-4" id="product6">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Samsung+Galaxy+S21" class="card-img-top" alt="Samsung Galaxy S21">
+                    <div class="card-body">
+                        <h5 class="card-title">Samsung Galaxy S21</h5>
+                        <p class="card-text">The Galaxy S21 features a dynamic AMOLED display, a triple-camera system, and powerful performance.</p>
+                        <p class="price">$799.00</p>
+                        <button class="btn btn-success" onclick="toggleCartButton(this, 'Samsung Galaxy S21', 'The Galaxy S21 features a dynamic AMOLED display, a triple-camera system, and powerful performance.', 799)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Copy and customize for 10–15 products -->
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src=script.js></script>
 </body>
 </html>
+
+

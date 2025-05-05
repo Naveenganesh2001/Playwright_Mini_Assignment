@@ -1,68 +1,74 @@
-import { test, expect } from '@playwright/test';
+/*import {test} from './myfixtures';
 
-test('has title', async ({ page }) => {
 
-  await page.goto('http://127.0.0.1:5500/LoginPage.html');
+test('Test Case 1 - Login page Title', async ({ todoPage }) => {
 
-  await expect(page).toHaveTitle(/Login Page/);
+  await todoPage.goToWebsite('http://127.0.0.1:5500/LoginPage.html');
+
+  await todoPage.isUserIsOnLoginPage();
+  
+  await todoPage.toHaveTitle("Login Page");
+    
 });
 
 
-test('has h2', async ({ page }) => {
+test('Test Case 2 - Heading', async ({ todoPage }) => {
 
-  await page.goto('http://127.0.0.1:5500/LoginPage.html');
+  await todoPage.goToWebsite('http://127.0.0.1:5500/LoginPage.html');
 
-  await expect(page.locator('h2')).toHaveText('Login Page');
+  await todoPage.isUserIsOnLoginPage();
+
+  await todoPage.toHaveHeading('Login Page');
+
+});
+
+
+test('Test Case 3 - Invalid Email ID', async ({ todoPage }) => {
+
+  await todoPage.goToWebsite('http://127.0.0.1:5500/LoginPage.html');
+
+  await todoPage.isUserIsOnLoginPage();
+
+  await todoPage.enterEmailID("Naveen");
+
+  await todoPage.enterPassword("Naveen123");
+
+  await todoPage.clickLoginButton();
+
+  await todoPage.displayErrorMessage1();
 
 });
 
 
+test('Test Case 4 - Invalid Password', async ({ todoPage }) => {
 
-test('Invalid Email ID ', async ({ page }) => {
+  await todoPage.goToWebsite('http://127.0.0.1:5500/LoginPage.html');
 
-  await page.goto('http://127.0.0.1:5500/LoginPage.html');
+  await todoPage.isUserIsOnLoginPage();
 
-  await page.locator("#username").fill("naveen");
+  await todoPage.enterEmailID("naveen@gmail.com");
 
-  await page.locator("#password").fill("naveen123");
+  await todoPage.enterPassword("naveen");
 
-  await page.locator('//button[@type="submit"]').click();
+  await todoPage.clickLoginButton();
 
-  const errorMessage = await page.locator('(//div[@class="invalid-feedback"])[1]').textContent();
-
-  await console.log(errorMessage);
-
- });
-
-
- test('Invalid Password ', async ({ page }) => {
-
-  await page.goto('http://127.0.0.1:5500/LoginPage.html');
-
-  await page.locator("#username").fill("naveen@gmail.com");
-
-  await page.locator("#password").fill("naveen");
-
-  await page.locator('//button[@type="submit"]').click();
-
-  const errorMessage = await page.locator('(//div[@class="invalid-feedback"])[2]').textContent();
-
-  await console.log(errorMessage);
-
- });
-
-
-test('Valid Login', async ({ page }) => {
-
-  await page.goto('http://127.0.0.1:5500/LoginPage.html');
-
-  await page.locator("#username").fill("Naveen@gmail.com");
-
-  await page.locator("#password").fill("Naveen123");
-
-  await page.locator('//button[@type="submit"]').click();
-
-  await expect(page).toHaveURL('http://127.0.0.1:5500/HomePage.html');
+  await todoPage.displayErrorMessage2();
 
 });
 
+
+test('Test Case 5 - Valid Credentials', async ({ todoPage }) => {
+
+  await todoPage.goToWebsite('http://127.0.0.1:5500/LoginPage.html');
+
+  await todoPage.isUserIsOnLoginPage();
+
+  await todoPage.enterEmailID("naveen@gmail.com");
+
+  await todoPage.enterPassword("Naveen123");
+
+  await todoPage.clickLoginButton();
+
+  await todoPage.toHaveURL('http://127.0.0.1:5500/HomePage.html');
+
+});*/
