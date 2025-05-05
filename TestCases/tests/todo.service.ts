@@ -17,12 +17,21 @@ export class TodoPage {
     private readonly cartLink: Locator;
     private readonly logoutLink: Locator;
     private readonly addToCartButton: Locator;
+    private readonly listOfProductsTitle: Locator;
 
     private readonly cartPageElement: Locator;
     private readonly productChecker: Locator;
     private readonly removeFromCartButton: Locator;
 
     private readonly checkOutButton: Locator;
+
+    private readonly profilePageElement: Locator;
+    private readonly name: Locator;
+    private readonly age: Locator;  
+    private readonly phone: Locator;
+    private readonly address: Locator;
+    private readonly submitButton: Locator;
+    private readonly successMessage: Locator;
 
     constructor(public readonly page: Page) {
 
@@ -39,12 +48,21 @@ export class TodoPage {
         this.cartLink = page.locator('//li[@class="list-group-item"]//a[contains(text(),"Cart")]');
         this.logoutLink = page.locator('//li[@class="list-group-item"]//a[contains(text(),"Logout")]');
         this.addToCartButton = page.locator('(//button[@class="btn btn-success"])[1]');
+        this.listOfProductsTitle = page.locator('//h5[@class="card-title"]');
 
         this.cartPageElement = page.locator('//div[@class="container mt-5"]');
         this.productChecker = page.locator('#cartMessage');
         this.removeFromCartButton = page.locator('//button[@class="btn btn-danger"]');
 
         this.checkOutButton = page.locator('#checkoutBtn');
+
+        this.profilePageElement = page.locator('#profileForm');
+        this.name = page.locator('#name');
+        this.age = page.locator('#age');
+        this.phone = page.locator('#phone');
+        this.address = page.locator('#address');
+        this.submitButton = page.locator('//button[@type="submit"]');
+        this.successMessage = page.locator('#successMessage');
 
         
     };
@@ -153,6 +171,7 @@ export class TodoPage {
 
     async clickOnLogoutLink() {
         await this.logoutLink.click();
+        console.log("User is logged out successfully");
     };
 
 
@@ -196,6 +215,53 @@ export class TodoPage {
     async clickOnCheckoutButton() {
         await this.checkOutButton.click();
     };
+
+
+    async printProductsTitle() {
+        const count = await this.listOfProductsTitle.count();
+    
+        for (let i = 0; i < count; i++) {
+            const productTitle = await this.listOfProductsTitle.nth(i).textContent();
+            console.log(productTitle?.trim());
+        }
+    }
+
+
+    async isUserIsOnProfilePage() {
+
+        const isVisible = await this.profilePageElement.isVisible();
+        if (isVisible) {
+            console.log("User is on Profile page");
+        } else {
+            console.log("User is not on Profile page");
+        }  
+
+    };
+
+
+    async enterUserDetails(name: string, age: number, phone: number, address: string) {
+
+        await this.name.fill(name);
+
+        await this.age.fill(age.toString());
+
+        await this.phone.fill(phone.toString());
+
+        await this.address.fill(address);
+
+    }
+
+
+    async clickSubmitButton() {
+
+        await this.submitButton.click();
+
+        const successMsg = await this.successMessage.textContent();
+
+        console.log(successMsg);
+    }
+
+
 
 
 }

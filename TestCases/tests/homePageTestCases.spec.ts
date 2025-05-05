@@ -1,4 +1,4 @@
-/*import {test} from './myfixtures';
+import {test} from './myfixtures';
 
 
 test('Test Case 1 - Home Page Title', async ({ todoPage }) => {
@@ -63,4 +63,14 @@ test('Test Case 5 - Logout link', async ({ todoPage }) => {
 
     await todoPage.toHaveURL('http://127.0.0.1:5500/loginPage.html');
 
-});*/
+});
+
+
+test('Test Case 6 - Print All Products Title', async ({ todoPage }) => {
+    
+    await todoPage.goToWebsite('http://127.0.0.1:5500/HomePage.html');
+
+    await todoPage.isUserIsOnHomePage();
+
+    await todoPage.printProductsTitle();
+});

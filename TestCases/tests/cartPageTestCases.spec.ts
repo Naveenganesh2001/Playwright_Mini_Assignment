@@ -1,7 +1,7 @@
 import {test} from './myfixtures';
 
 
-/*test('Test Case 1 - Cart Page Title', async ({ todoPage }) => {
+test('Test Case 1 - Cart Page Title', async ({ todoPage }) => {
 
     await todoPage.goToWebsite('http://127.0.0.1:5500/cartPage.html');
 
@@ -36,7 +36,7 @@ test('Test Case 3 - Add the Products to the Cart', async ({ todoPage }) => {
     await todoPage.isUserIsOnCartPage();
 
     await todoPage.checkProductsInTheCart();
-});*/
+});
 
 
 test('Test Case 4 - Remove the Products from the Cart', async ({ todoPage }) => {

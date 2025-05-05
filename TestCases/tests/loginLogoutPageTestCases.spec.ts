@@ -1,4 +1,4 @@
-/*import {test} from './myfixtures';
+import {test} from './myfixtures';
 
 
 test('Test Case 1 - Login page Title', async ({ todoPage }) => {
@@ -71,4 +71,27 @@ test('Test Case 5 - Valid Credentials', async ({ todoPage }) => {
 
   await todoPage.toHaveURL('http://127.0.0.1:5500/HomePage.html');
 
-});*/
+});
+
+
+test('Test Case 6 - Logout ', async ({ todoPage }) => {
+
+  await todoPage.goToWebsite('http://127.0.0.1:5500/LoginPage.html');
+
+  await todoPage.isUserIsOnLoginPage();
+
+  await todoPage.enterEmailID("naveen@gmail.com");
+
+  await todoPage.enterPassword("Naveen123");
+
+  await todoPage.clickLoginButton();
+
+  await todoPage.isUserIsOnHomePage();
+
+  await todoPage.clickOnMenuButton();
+
+  await todoPage.clickOnLogoutLink();
+
+  await todoPage.isUserIsOnLoginPage();
+
+});
