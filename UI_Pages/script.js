@@ -31,6 +31,8 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
 
 
 function toggleCartButton(button, title, description, price) {
+    const imgSrc = button.closest('.product-card').querySelector('img').src;  // Get the image source
+
     let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
     if (button.textContent === "Add to Cart") {
@@ -39,7 +41,7 @@ function toggleCartButton(button, title, description, price) {
         button.classList.add('btn-danger');
 
         // Add product to cartItems array
-        cartItems.push({ title, description, price });
+        cartItems.push({ title, description, price, imgSrc });
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
     } else {
         button.textContent = "Add to Cart";
@@ -51,7 +53,7 @@ function toggleCartButton(button, title, description, price) {
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
     }
 }
-
+    
 
 
 
